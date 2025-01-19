@@ -1,0 +1,31 @@
+---
+- name: Set up IIS site
+  hosts: windows
+  gather_facts: false
+  vars:
+    site_name: www.mysiteexample.com
+    site_path: C:\inetpub\wwwroot\mysiteexample
+
+  tasks:
+    - name: Create site directory
+      win_file:
+        path: "{{ site_path }}"
+        state: directory
+
+    - name: Create index.html
+      win_copy:
+        content: "<h1>It works!!!</h1>"
+        dest: "{{ site_path }}\\index.html"
+
+    - name: Create IIS website
+      win_iis_website:
+        name: "{{ site_name }}"
+        state: started
+        port: 80
+        physical_path: "{{ site_path }}"
+
+    - name: Add host file entry
+      win_hosts:
+        state: present
+        ip_address: 192.168.56.11
+        hostname: "{{ site_name }}"
