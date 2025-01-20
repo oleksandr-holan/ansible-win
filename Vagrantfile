@@ -7,7 +7,6 @@ Vagrant.configure("2") do |config|
       sudo apt update
       sudo apt install -y python3-pip
       pip3 install pywinrm
-      pip3 install --user ansible
     SHELL
   end
 
