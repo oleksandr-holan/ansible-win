@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
     windows.vm.box = "gusztavvargadr/windows-server"
     windows.vm.network "private_network", ip: "192.168.56.11"
     windows.vm.hostname = "windows-iis"
+    windows.vm.network "forwarded_port", guest: 3389, host: 33389, auto_correct: true
     windows.vm.provider "virtualbox" do |vb|
       vb.memory = 2048
       vb.cpus = 2
