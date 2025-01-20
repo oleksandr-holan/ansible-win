@@ -27,10 +27,10 @@ This guide will walk you through setting up a Windows environment using Vagrant 
      - Password: `vagrant`
 
 3. **Configure Windows for Ansible Remoting**
-   - In the Windows VM, open PowerShell and execute the script to configure remoting for Ansible:
+   - In the Windows VM, open PowerShell with administrative privileges and execute the script to configure remoting for Ansible:
 
      ```powershell
-     powershell /vagrant/ConfigureRemotingForAnsible.ps1
+     powershell C:\vagrant\ConfigureRemotingForAnsible.ps1
      ```
 
    - **Note:** This configuration should only be used in development or testing environments.
@@ -57,7 +57,7 @@ This guide will walk you through setting up a Windows environment using Vagrant 
      ```
 
 7. **Update Host Entries on the Host Machine**
-   - On your host machine, open a terminal with administrative privileges and run the following script to add a host entry:
+   - On your host machine, open PowerShell with administrative privileges and run the following script to add a host entry:
 
      ```powershell
      .\Add-HostEntry.ps1 -ipAddress "192.168.56.11" -canonicalName "www.mysiteexample.com"
